@@ -1,2 +1,9 @@
 /env/
 /merchex/db.sqlite3
+/.idea/dbnavigator.xml
+/.idea/misc.xml
+/.idea/vcs.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/modules.xml
+!/requirement.txt
+!/README.md
