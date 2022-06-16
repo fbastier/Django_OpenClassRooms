@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>A propos de nous...</title>
-</head>
-<body>
-    <h1>A propos</h1>
-    <br>
-    <p>Nous sommes Merchex</p>
-</body>
-</html>
+{% extends 'listings/gabarit.html' %}
+
+    {% block title %}
+        <title>A propos de nous...</title>
+    {% endblock %}
+
+    {% block content %}
+        <h1>A propos</h1>
+        <br>
+        <p>Nous sommes Merchex (avec gabarit)</p>
+    {% endblock %}

@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Merchex</title>
-</head>
-<body>
-    <h1>Hello Django !!</h1>
-    <p>Mes {{bands|length}} Groupes préférés sont :</p>
+{% extends 'listings/gabarit.html' %}
+
+    {% block title %}
+        <title>Merchex</title>
+    {% endblock %}
+
+    {% block content %}
+        <h1>Hello Django avec gabarit !!</h1>
+        <p>Mes {{bands|length}} Groupes préférés sont :</p>
 
     <!--TODO : liste des groupes-->
-    <ul>
+        <ul>
 <!--        <li>{{bands.0.name}}</li>-->
 <!--        <li>{{bands.1.name}}</li>-->
 <!--        <li>{{bands.2.name}}</li>-->
         {% for band in bands %}
-        <li>{{ band.name|title }}</li>
+            <li>{{ band.name|title }}</li>
         {% endfor %}
-    </ul>
-
-</body>
-</html>
+        </ul>
+    {% endblock %}
