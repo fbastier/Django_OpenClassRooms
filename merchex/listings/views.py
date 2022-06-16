@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from listings.models import Band
+from listings.models import Title, Band
 
 
 def hello(request):
     bands = Band.objects.all()
+    titles = Title.objects.all()
     return render(request, 'listings/hello.html', context={'bands':bands})
 
 
@@ -13,7 +14,7 @@ def about(request):
 
 
 def listings(request):
-    titles = Band.objects.all()
+    titles = Title.objects.all()
     return render(request, 'listings/listings.html', context={'titles':titles})
 
 

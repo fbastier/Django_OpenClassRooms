@@ -7,8 +7,8 @@
     {% block content %}
         <h1>Liste des titres (gabarit)</h1>
             <ul>
-                {% for band in titles %}
-                    <li>{{band.title|upper}} ({{band.name|lower}})</li>
+                {% for title in titles %}
+                    <li>{{title.title|upper}} ()</li>
                 {% endfor %}
             </ul>
     {% endblock %}
