@@ -8,7 +8,7 @@
         <h1>Liste des titres (gabarit)</h1>
             <ul>
                 {% for title in titles %}
-                    <li>{{title.title|upper}} ()</li>
+                    <li><a href="{% url 'merchandise_detail' title.id %}">{{title.title|upper}}</a> ({{title.band}})</li>
                 {% endfor %}
             </ul>
     {% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'listings/gabarit.html' %}
+
+{% block title %}
+    <title>Détail du produit</title>
+{% endblock %}
+
+{% block content %}
+    <h2>{{ title.title }}</h2>
+    <ul>
+        <li>Description : {{ title.description }}</li>
+        <li>Année : {{ title.year }}</li>
+    </ul>
+    <p>Vendu : {{ title.sold | yesno}}</p>
+    <a href="{% url 'merchandise_list' %}">Retour à la liste des produits</a>
+{% endblock %}

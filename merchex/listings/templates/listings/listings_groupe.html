@@ -1,0 +1,16 @@
+{% extends 'listings/gabarit.html' %}
+
+{% block title %}
+    <title>Produits du groupe</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Liste des produits du groupe {{ title.band }}</h1>
+    <ul>
+        TEST
+        {% for title in band.listing_set.all %}
+            <li>tut</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

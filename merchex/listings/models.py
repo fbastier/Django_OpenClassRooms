@@ -16,13 +16,16 @@ class Band(models.Model):
     active = models.fields.BooleanField(default=True)
     official_page = models.fields.URLField(null=True, blank=True)
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Title(models.Model):
     class Type(models.TextChoices):
-        disques = 'Records'
-        vetements = 'Clothing'
-        affiches = 'Posters'
-        divers = 'Miscellaneous'
+        DISQUES = 'Records'
+        VETEMENT = 'Clothing'
+        AFFICHE = 'Posters'
+        DIVERS = 'Miscellaneous'
 
     title = models.fields.CharField(max_length=100)
     description = models.fields.CharField(max_length=500)
@@ -31,5 +34,9 @@ class Title(models.Model):
                                       null=True,
                                       blank=True)
     type = models.fields.CharField(choices=Type.choices, default='Miscellaneous', max_length=20)
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return f'{self.title}'
 
 

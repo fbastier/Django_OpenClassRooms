@@ -7,6 +7,10 @@
     {% block title %}{% endblock %}
 </head>
 <body>
+    <nav>
+        <a href="{% url 'band_list' %}">Groupes</a>
+        <a href="{% url 'merchandise_list' %}">Merchandise</a>
+    </nav>
   {% block content %}{% endblock %}
 </body>
 </html>
