@@ -26,9 +26,11 @@ def listings_detail(request, id):
     title = Title.objects.get(id=id)
     return render(request, 'listings/listings_detail.html', context={'title':title})
 
+
 def listings_groupe(request, band):
-    title = Title.objects.get(band=band)
-    return render(request, 'listings/listings_groupe.html', context={'band':band, 'title':title})
+    bands = Band.objects.get(id=band)
+    titles = Title.objects.filter(band=band).values()
+    return render(request, 'listings/listings_groupe.html', context={'titles':titles, 'band':bands})
 
 
 def contact(request):

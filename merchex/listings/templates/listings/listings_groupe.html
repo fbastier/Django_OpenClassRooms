@@ -5,11 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Liste des produits du groupe {{ title.band }}</h1>
+    <h1>Liste des produits du groupe {{ band.name }}</h1>
     <ul>
-        TEST
-        {% for title in band.listing_set.all %}
-            <li>tut</li>
+        {% for title in titles %}
+            <li><a href="{% url 'merchandise_detail' title.id %}">{{ title.title|upper }}</a> ({{ title.year }})</li>
         {% endfor %}
     </ul>
 
