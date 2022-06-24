@@ -21,9 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('bands/', views.band_list, name='band_list'),
     path('bands/<int:id>/', views.band_detail, name='band-detail'),
-    path('about-us/', views.about),
+    path('about-us/', views.about, name='about'),
     path('listings/', views.listings, name='merchandise_list'),
     path('listings/<int:id>/', views.listings_detail, name='merchandise_detail'),
     path('listings/<int:band>/merchandise/', views.listings_groupe, name='merchandise_groupe'),
-    path('contact-us', views.contact),
+    path('contact-us', views.contact, name="contact"),
+    path('email_sent', views.mailSent, name="email-sent" )
 ]
