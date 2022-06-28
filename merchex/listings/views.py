@@ -105,3 +105,21 @@ def listing_update(request, id):
     else:
         form = ListingForm(instance = title)
     return render(request, 'listings/listing_update.html', {'form':form})
+
+
+def band_delete(request, id):
+    band = Band.objects.get(id=id) # pour GET et POST
+    if request.method == "POST":
+        band.delete()
+        return redirect('band_list')
+    # pas besoin de else, Si c'est une demande GET on continue
+    return render(request, 'listings/band_delete.html', {'band': band})
+
+
+def listing_delete(request, id):
+    title = Title.objects.get(id=id) # pour GET et POST
+    if request.method == "POST":
+        title.delete()
+        return redirect('merchandise_list')
+    # pas besoin de else, Si c'est une demande GET on continue
+    return render(request, 'listings/listing_delete.html', {'title': title})

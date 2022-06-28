@@ -1,0 +1,16 @@
+{% extends 'listings/gabarit.html' %}
+
+{% block title %}
+<title>Supprimer produit</title>
+{% endblock %}
+
+{% block content %}
+<h1>Suppression du produit</h1>
+
+<p>Êtes-vous sûr de vouloir supprimer le produit : {{ title.title }} ?</p>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Supprimer">
+</form>
+{% endblock %}
