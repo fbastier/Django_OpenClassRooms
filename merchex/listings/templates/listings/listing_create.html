@@ -1,0 +1,15 @@
+{% extends 'listings/gabarit.html' %}
+
+    {% block title %}
+        <title>New merchandise</title>
+    {% endblock %}
+
+    {% block content %}
+        <h1>Formulaire de création d'un produit</h1>
+
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{ title.as_p }}
+        <input type="submit" value="Envoyer">
+    </form>
+    {% endblock %}

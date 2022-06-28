@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from listings.models import Title, Band
-from listings.forms import ContactUsForm
+from listings.forms import ContactUsForm, BandForm, ListingForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 
@@ -38,10 +38,10 @@ def listings_groupe(request, band):
 
 
 def contact(request):
-    print('la méthode de requête est : ', request.method) # instructions impression dans terminal
+    print('la méthode de requête est : ', request.method)  # instructions impression dans terminal
     print('Les données POST sont : ', request.POST)
     if request.method == 'POST':
-        form = ContactUsForm(request.POST) # Créer instance formulaire remplie avec données POST
+        form = ContactUsForm(request.POST)  # Créer instance formulaire remplie avec données POST
         if form.is_valid():
             send_mail(
                 subject=f'Message from {form.cleaned_data["name"] or "anonyme"} via Merchex Contact Us',
@@ -51,11 +51,57 @@ def contact(request):
             )
             return redirect('email-sent')
     else:
-        form = ContactUsForm()   # ajout d'un nouveau formulaire requête GET
+        form = ContactUsForm()  # ajout d'un nouveau formulaire requête GET
     return render(request,
                   'listings/contact.html',
-                  {'form':form}) # passe ce formulaire au gabarit
+                  {'form': form})  # passe ce formulaire au gabarit
 
 
 def mailSent(request):
     return render(request, 'listings/email-sent.html')
+
+
+def band_create(request):
+    if request.method == 'POST':
+        form = BandForm(request.POST)
+        if form.is_valid():
+            band = form.save()
+            return redirect('band-detail', band.id)
+    else:
+        form = BandForm()
+    return render(request, 'listings/band_create.html', {'form': form})
+
+
+def listing_create(request):
+    if request.method == 'POST':
+        title = ListingForm(request.POST)
+        if title.is_valid():
+            title = title.save()
+            return redirect('merchandise_list')
+    else:
+        title = ListingForm()
+    return render(request, 'listings/listing_create.html', {'title': title})
+
+
+def band_update(request, id):
+    band = Band.objects.get(id=id)
+    if request.method == "POST":
+        form = BandForm(request.POST, instance=band) # Pré-remplissage avec les datas d'un groupe existant
+        if form.is_valid():
+            form.save()
+            return redirect('band-detail', band.id)
+    else:
+        form = BandForm(instance=band)
+    return render(request, 'listings/band_update.html', {'form': form})
+
+
+def listing_update(request, id):
+    title = Title.objects.get(id=id)
+    if request.method == 'POST':
+        form = ListingForm(request.POST, instance=title)
+        if form.is_valid:
+            form.save()
+            return redirect('merchandise_detail', title.id)
+    else:
+        form = ListingForm(instance = title)
+    return render(request, 'listings/listing_update.html', {'form':form})

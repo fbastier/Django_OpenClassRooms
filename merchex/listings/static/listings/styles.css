@@ -1,2 +1,6 @@
-* { background: white }
-.errorlist {margin-bottom: -10px }
+* { background: #f8c291 }
+
+.errorlist { margin-bottom: -10px;
+             color: green;   }
+
+::marker {color: red}

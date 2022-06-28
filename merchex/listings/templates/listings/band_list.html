@@ -14,7 +14,12 @@
 <!--        <li>{{bands.1.name}}</li>-->
 <!--        <li>{{bands.2.name}}</li>-->
         {% for band in bands %}
-            <li><a href="{% url 'band-detail' band.id %}">{{ band.name|title }}</a></li>
+            <li><a href="{% url 'band-detail' band.id %}">{{ band.name|title }}</a> -
+                <a href="{% url 'band-update' band.id %}">[modifier]</a>
+            </li>
+
         {% endfor %}
+            <br>
+            <a href="{% url 'band-create' %}">Créer un nouveau groupe</a>
         </ul>
     {% endblock %}

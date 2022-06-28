@@ -1,0 +1,16 @@
+{% extends "listings/gabarit.html" %}
+
+    {% block title %}
+        <title>Update groupe</title>
+    {% endblock %}
+
+    {% block content %}
+        <h1>Update des datas d'un groupe</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Soumettre">
+    </form>
+
+    {% endblock %}

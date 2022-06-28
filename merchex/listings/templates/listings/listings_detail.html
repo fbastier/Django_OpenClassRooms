@@ -11,5 +11,7 @@
         <li>Année : {{ title.year }}</li>
     </ul>
     <p>Vendu : {{ title.sold | yesno}}</p>
+    <br>
+    <a href="{% url 'listing_update' title.id %}">modifier le produit</a>
     <a href="{% url 'merchandise_list' %}">Retour à la liste des produits</a>
 {% endblock %}
